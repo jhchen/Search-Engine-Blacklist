@@ -1,0 +1,36 @@
+Search Engine Blacklist
+=======================
+
+WHAT
+----
+This is a browser plugin that will allow you to specify a list of sites to blacklist
+from your Google search results. When the plugin detects you are searching on google,
+it will go through the search results and hide those from the sites contained in the
+blacklist. Currently there is a version for Google Chrome.
+
+LATEST VERSIONS
+---------------
+Chrome - https://chrome.google.com/extensions/detail/jiicbcimbjppjbckmoknagndlhjbeohb
+
+DOCUMENTATION
+-------------
+Chrome
+	blacklist.js - main content script run on google pages that will analyze search
+				   results and hide those that appear on the blacklist
+	background.html - provides blacklist.js with access to locally stored blacklist
+	option.html/css/js - interface and logic for the options page where users will enter
+						 the desired sites to blacklist, which will be saved locally
+	parseUri.js - uri parsing library written by Steve Levithan
+
+LICENSING
+---------
+See file named LICENSE.
+
+CONTACT
+-------
+If you want to be a part of the development conversation please message or email me.
+
+FEATURE REQUESTS
+----------------
+http://seblacklist.uservoice.com/
+
