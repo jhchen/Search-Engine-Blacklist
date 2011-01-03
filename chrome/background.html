@@ -3,6 +3,11 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	if (request.method == "getBlacklist") {
 		sendResponse(JSON.parse(localStorage['blacklisted_sites']));
 	}
+	else if (request.method == "addToBlacklist") {
+		blacklist = JSON.parse(localStorage['blacklisted_sites']);
+		blacklist.append(request.site);
+		localStorage['blacklisted_sites'] = JSON.stringify(blacklist);
+	}
 	else {
 		sendResponse([]);
 	}
