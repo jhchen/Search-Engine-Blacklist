@@ -1,0 +1,102 @@
+body {
+	color: #333;
+	font-family: "Helvetica Neue", "Helvetica", san-serif;
+}
+
+.header {
+	font-size: 24px;
+    margin: 15px 0px 10px;
+    text-align: center;
+}
+
+.header img {
+	margin-left: -20px;
+	vertical-align: middle;
+}
+
+#content_container {
+    margin: auto;
+	overflow: visible;
+  	width: 685px;
+}
+
+#instruction_container {
+	float: right;
+	width: 260px;
+}
+
+#instruction_container p {
+	margin: 0px 0px 10px;
+}
+
+#form_container {
+	float: left;
+}
+
+#blacklist_container {
+	width: 350px;
+}
+
+.blacklist_item {
+	width: 385px;
+}
+
+.blacklist_item .site_text {
+	border: 2px solid #418deb;
+    font-size: 14px;
+	outline: none;
+	padding: 2px;
+    width: 350px;
+}
+
+.blacklist_item .warning {
+	border: 2px solid #FFFF00;
+}
+
+#button_container {
+	margin: 15px 0px;
+}
+
+.add_button {
+	color: #418deb;
+	text-decoration: none;
+}
+
+.remove_button {
+	background-color: transparent;
+	background-image: url('remove.png');
+    border: none;
+	cursor: pointer;
+	display: none;
+	float: right;
+	height: 20px;
+	margin: 5px;
+	width: 20px;
+}
+
+.save_button {
+    float: right;
+	width: 60px;
+}
+
+#save_status {
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+#validation_status {
+	font-color: #00FF00;
+	font-size: 14px;
+}
+
+#validation_status img {
+	float: left;
+	margin: 5px;
+}
+
+.status, .template {
+    display: none;
+}
+

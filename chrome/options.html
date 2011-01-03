@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>Google Blacklist Extension Options</title>
+	<link rel=StyleSheet href="options.css" type="text/css">
+</head>
+
+<body>
+	<h3 class="header">
+		<img src="gear.png" />
+		Blacklisted Domains
+	</h3>
+	<div id="content_container">
+		<div id="instruction_container">
+			<p>List the sites you don't want to ever see in your Google Search results.</p>
+			<p>Only enter the URL host<br/>ex. www.spam.com, seo.abuse.com</p>
+			<p>Once you are done and save, this extension will hide all search results from those sites</p>
+		</div>
+
+		<div id="form_container">
+			<div id="blacklist_container">
+				<div class="blacklist_item template">
+					<input type="text" class="site_text" />
+					<button class='remove_button' tabIndex="-1"></button>
+				</div>
+			</div>
+			<div id="button_container">
+				<a href='javascript:;' class='add_button'>Add another row</a>
+				<button class="save_button">Save</button>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		<div style="clear:both"></div>
+		
+		<div id="save_status" class="status">Blacklist saved!</div>
+		<div id="validation_status" class="status">
+			<img src="warning.png" />
+			One or more of your listed sites may not be valid. I'll save them anyways but they probably will not work as you expect them to
+		</div>
+	</div>
+
+	<script type="text/javascript" src="jquery-1.4.4.js"></script>
+	<script type="text/javascript" src="parseUri.js"></script>
+	<script type="text/javascript" src="options.js"></script>
+</body>
+</html>
