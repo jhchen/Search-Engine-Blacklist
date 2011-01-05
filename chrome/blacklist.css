@@ -1,7 +1,8 @@
 @CHARSET "UTF-8";
 
 .se_blacklist_tool_remove {
-	background: url('chrome-extension://mlhhgekdfaciagacggeepoaapbkdbngg/google_remove.png') no-repeat left bottom;
+	/* CSS Content scripts require absolute path for now... http://code.google.com/p/chromium/issues/detail?id=39899 */
+	background: url('chrome-extension://jiicbcimbjppjbckmoknagndlhjbeohb/google_remove.png') no-repeat left bottom;
 	border: none;
 	cursor: pointer;
 	height: 14px;
@@ -13,10 +14,4 @@
 
 div.vsc:hover .se_blacklist_tool_remove {
 	opacity: 1;
-}
-
-#se_blacklist_tooltip {
-	background: url('chrome-extension://mlhhgekdfaciagacggeepoaapbkdbngg/black_arrow.png');
-	display: none;
-	position: absolute;
 }
