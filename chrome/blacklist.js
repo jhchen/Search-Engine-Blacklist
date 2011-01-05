@@ -4,6 +4,9 @@ var GoogleBlacklist = {
 	getDomain: function(uri) {
 		var parsed = parseUri(uri);
     	if (parsed.host) {
+    		if (parsed.host.split(".").length <= 2) {
+    			parsed.host = "www." + parsed.host;
+			}
         	return parsed.host;
     	}
     	else if (parsed.queryKey && parsed.queryKey.url) {
@@ -17,9 +20,6 @@ var GoogleBlacklist = {
 	checkBlacklist: function(uri) {
 		var domain = GoogleBlacklist.getDomain(uri);
 		if (domain != "") {
-			if (domain.split(".").length <= 2) {
-				domain = "www." + domain;
-			}
 			return $.inArray(domain, GoogleBlacklist.blacklist) != -1;
 		}
 		return false;
@@ -64,10 +64,6 @@ var GoogleBlacklist = {
 				});
 			}
 		});
-	},
-
-	showTooltop: function(button) {
-		
 	},
 
 	init: function(blacklist) {
