@@ -1,6 +1,6 @@
 {
 	"name": "Search Engine Blacklist",
-	"version": "2.6",
+	"version": "2.6.1",
 	"description": "Easily blacklist spam sites from ever appearing in your Google search results again.",
 	"icons": { 	"16": "gear-16.png",
            		"48": "gear-48.png",
