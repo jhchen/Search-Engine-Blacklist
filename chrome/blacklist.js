@@ -25,21 +25,49 @@ var GoogleBlacklist = {
 		return false;
 	},
 
-	removeBlacklisted: function() {
-		if ($("#ires ol li #blacklist_marker").length > 0) {
-			//Nothing's changed since our last trimming
-			return;
+	removeBlacklisted: function(forced) {
+		if (!forced) {
+			if ($("#ires ol li #blacklist_marker").length > 0) {
+				//Nothing's changed since our last trimming
+				return;
+			}
 		}
+		
 		$("#ires ol li").each(function() {
         	var that = this;
-        	$("a", this).each(function() {
+        	$("a.l", this).each(function() {
             	if (GoogleBlacklist.checkBlacklist($(this).attr('href'))) {
 					$(that).hide();
                 	return false;
             	}
         	});
     	});
-		$("#ires ol li:first").append("<div style='display:none;' id='blacklist_marker'></div>");
+		
+		if (!forced) {
+			$("#ires ol li:first").append("<div style='display:none;' id='blacklist_marker'></div>");
+		}
+	},
+
+	addTooltip: function() {
+		//Add buttons for the tooltip
+		$("#ires ol li").each(function() {
+			$("button:last", this).after("<button class='se_blacklist_tool_remove'></button>");
+		});
+		
+		$('.se_blacklist_tool_remove').live('click', function() {
+			var li = $(this).closest('li');
+			var url = GoogleBlacklist.getDomain($('a.l:first', li).attr('href'));
+			if (confirm("Blacklist " + url + "?")) {
+				chrome.extension.sendRequest({method: "addToBlacklist", site: url}, function(response) {
+					GoogleBlacklist.blacklist.push(url);
+					GoogleBlacklist.removeBlacklisted(true);
+				});
+			}
+		});
+	},
+
+	showTooltop: function(button) {
+		
 	},
 
 	init: function(blacklist) {
@@ -48,11 +76,15 @@ var GoogleBlacklist = {
 		//For Google Instant
 		setInterval(function() {
 			GoogleBlacklist.removeBlacklisted();
-		}, 100)
+		}, 100);
+
+		GoogleBlacklist.addTooltip();
 	}
 };
 
-chrome.extension.sendRequest({method: "getBlacklist"}, function(response) {
-	GoogleBlacklist.init(response);
+$(document).ready(function() {
+	chrome.extension.sendRequest({method: "getBlacklist"}, function(response) {
+		GoogleBlacklist.init(response);
+	});
 });
 

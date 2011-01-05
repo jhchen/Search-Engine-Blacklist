@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+.se_blacklist_tool_remove {
+	background: url('chrome-extension://mlhhgekdfaciagacggeepoaapbkdbngg/google_remove.png') no-repeat left bottom;
+	border: none;
+	cursor: pointer;
+	height: 14px;
+	margin-left: 5px;
+	margin-right: 3px;
+	opacity: .3;
+	width: 14px;
+}
+
+div.vsc:hover .se_blacklist_tool_remove {
+	opacity: 1;
+}
+
+#se_blacklist_tooltip {
+	background: url('chrome-extension://mlhhgekdfaciagacggeepoaapbkdbngg/black_arrow.png');
+	display: none;
+	position: absolute;
+}
