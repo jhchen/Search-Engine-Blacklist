@@ -1,12 +1,13 @@
 {
 	"name": "Search Engine Blacklist",
-	"version": "2.6.1",
+	"version": "2.6.3",
 	"description": "Easily blacklist spam sites from ever appearing in your Google search results again.",
 	"icons": { 	"16": "gear-16.png",
            		"48": "gear-48.png",
           		"128": "gear-128.png" },
 	"content_scripts": [{
 		"matches": ["*://www.google.com/search*", "*://www.google.com/",
+					"*://encrypted.google.com/search*", "*://encrypted.google.com/",
 					"*://www.google.de/search*", "*://www.google.de/",
 					"*://www.google.at/search*", "*://www.google.at/",
 					"*://www.google.pl/search*", "*://www.google.pl/",
