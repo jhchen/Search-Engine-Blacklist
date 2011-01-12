@@ -1,12 +1,12 @@
 {
 	"name": "Search Engine Blacklist",
-	"version": "2.6.3",
+	"version": "2.6.4",
 	"description": "Easily blacklist spam sites from ever appearing in your Google search results again.",
 	"icons": { 	"16": "gear-16.png",
            		"48": "gear-48.png",
           		"128": "gear-128.png" },
 	"content_scripts": [{
-		"matches": ["<all_urls>"],	//Too bad we can't do *://www.google.*/
+		"matches": ["<all_urls>"],
 		"js": ["jquery-1.4.4.js", "parseUri.js", "blacklist.js"],
 		"css": ["blacklist.css"],
 		"run_at": "document_end"
