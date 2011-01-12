@@ -79,8 +79,10 @@ var GoogleBlacklist = {
 };
 
 $(document).ready(function() {
-	chrome.extension.sendRequest({method: "getBlacklist"}, function(response) {
-		GoogleBlacklist.init(response);
-	});
+	if ($.inArray('google', document.location.hostname.split('.'))) {
+		chrome.extension.sendRequest({method: "getBlacklist"}, function(response) {
+			GoogleBlacklist.init(response);
+		});
+	}
 });
 
