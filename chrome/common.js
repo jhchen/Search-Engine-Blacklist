@@ -1,9 +1,5 @@
 function validateUri(uri) {
-    if (uri.indexOf("http://") == 0) {
-        uri = uri.substring(7);
-    }
-
-    var host = parseUri(uri);	
+	var host = parseUri(uri);	
 	switch(host.host){
 		case "":
 			host = host.source;
@@ -32,7 +28,7 @@ function validateUri(uri) {
 			tld: tld,
 			subdomain: subdomain,
 			domain: domain,
-			valid: valid,
-			full: full
+			full: full,
+			valid: valid
 			};
 }
