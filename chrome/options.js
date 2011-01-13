@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	DEFAULT_NUM_ROWS = 6;
-	parseUri.options.strictMode = true;
 
     restoreOptions();
    
@@ -37,6 +36,9 @@ $(document).ready(function() {
 		}
         $(this).parent().addClass("terminating").slideUp(function() {
             $(this).remove();
+            if ($(".site_text.warning:not(terminating)").length == 0) {
+            	$('#validation_status').hide();
+            }
         });
     });
 
