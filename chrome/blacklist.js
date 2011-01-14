@@ -1,26 +1,28 @@
 var GoogleBlacklist = {
 	blacklist: [],
 
-	getDomain: function(uri) {
+	getBlackObject: function(uri) {
 		var parsed = parseUri(uri);
-    	if (parsed.host) {
-    		if (parsed.host.split(".").length <= 2) {
-    			parsed.host = "www." + parsed.host;
-			}
-        	return parsed.host;
-    	}
-    	else if (parsed.queryKey && parsed.queryKey.url) {
-        	return GoogleBlacklist.getDomain(parsed.queryKey.url);
+		
+    	if (parsed.host) {    	
+			return validateUri(parsed.host);
+    	} else if (parsed.queryKey && parsed.queryKey.url) {
+			return GoogleBlacklist.getBlackObject(parsed.queryKey.url);
     	}
     	else {
-        	return "";
+        	return false;
     	}
 	},
 
 	checkBlacklist: function(uri) {
-		var domain = GoogleBlacklist.getDomain(uri);
-		if (domain != "") {
-			return $.inArray(domain, GoogleBlacklist.blacklist) != -1;
+		var blackObject = GoogleBlacklist.getBlackObject(uri);
+		if (blackObject) {
+			for (b in GoogleBlacklist.blacklist){
+				if (GoogleBlacklist.blacklist[b].host == blackObject.host){
+					return GoogleBlacklist.blacklist[b].subdomain == "*" || 
+					GoogleBlacklist.blacklist[b].subdomain == blackObject.subdomain;
+				}
+			}
 		}
 		return false;
 	},
@@ -56,8 +58,8 @@ var GoogleBlacklist = {
 		
 		$('.se_blacklist_tool_remove').live('click', function() {
 			var li = $(this).closest('li');
-			var url = GoogleBlacklist.getDomain($('a.l:first', li).attr('href'));
-			if (confirm("Blacklist " + url + "?")) {
+			var url = GoogleBlacklist.getBlackObject($('a.l:first', li).attr('href'));
+			if (confirm("Blacklist " + url.full + "?")) {
 				chrome.extension.sendRequest({method: "addToBlacklist", site: url}, function(response) {
 					GoogleBlacklist.blacklist.push(url);
 					GoogleBlacklist.removeBlacklisted(true);

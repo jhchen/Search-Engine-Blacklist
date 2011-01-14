@@ -7,7 +7,7 @@
           		"128": "gear-128.png" },
 	"content_scripts": [{
 		"matches": ["<all_urls>"],
-		"js": ["jquery-1.4.4.js", "parseUri.js", "blacklist.js"],
+		"js": ["jquery-1.4.4.js", "parseUri.js", "common.js", "blacklist.js"],
 		"css": ["blacklist.css"],
 		"run_at": "document_end"
 	}],

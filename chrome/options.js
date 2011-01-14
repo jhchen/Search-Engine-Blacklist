@@ -59,13 +59,13 @@ $(document).ready(function() {
             if ($(".site_text", this).val()) {
 				var domain = parseUri($(".site_text", this).val());
 				if (domain && domain.host) {
-					sites.push(domain.host);
-				}
-				else {
-                	sites.push($(".site_text", this).val());
+					sites.push(validateUri(domain.host));
+				} else {
+					sites.push(validateUri(domain.source));
             	}
 			}
         });
+		
         localStorage["blacklisted_sites"] = JSON.stringify(sites);
 
         $("#save_status").slideDown();
@@ -90,7 +90,7 @@ $(document).ready(function() {
 	
         for (i in sites) {
         	var item = addBlacklistItem();
-			$(".site_text", item).val(sites[i]);
+			$(".site_text", item).val(sites[i].full);
 		}
 
         validateSites();
@@ -100,31 +100,15 @@ $(document).ready(function() {
 		var uri = $.trim($(".site_text", elem).val());
 		if (uri) {
 			var validated = validateUri(uri);
-			if (!validated) {
+			if (!validated.valid) {
 				$(".site_text", elem).addClass("warning");
             	return false;
 			}
-			$(".site_text", elem).val(validated);
+			$(".site_text", elem).val(validated.full);
 		}
 		
 		$(".site_text", elem).removeClass("warning");
 		return true;
-	}
-
-	function validateUri(uri) {
-		if (uri.indexOf("http") != 0) {
-			uri = "http://" + uri;
-		}
-		
-		var host = parseUri(uri).host;
-		if (host.match(/^([a-z0-9\-_]+\.)+[a-z0-9\-_]{1,4}$/i)) {
-			parts = host.split(".");
-			if (parts.length == 2) {
-				return "www." + host;
-			}
-			return host;
-		}
-		return false;
 	}
 	
 	function validateSites() {
