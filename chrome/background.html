@@ -15,6 +15,6 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 
 if (!localStorage["version"] && !localStorage['blacklisted_sites']) {
     chrome.tabs.create({url: "options.html"}); 
-    localStorage["version"] = "2.6.6";
+    localStorage["version"] = "2.7.1";
 }
 </script>

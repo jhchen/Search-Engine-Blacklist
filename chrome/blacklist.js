@@ -34,7 +34,8 @@ var GoogleBlacklist = {
 				return;
 			}
 		}
-		
+
+		GoogleBlacklist.addTooltip();
 		$("#ires ol li").each(function() {
         	var that = this;
         	$("a.l", this).each(function() {
@@ -75,8 +76,6 @@ var GoogleBlacklist = {
 		setInterval(function() {
 			GoogleBlacklist.removeBlacklisted();
 		}, 100);
-
-		GoogleBlacklist.addTooltip();
 	}
 };
 
