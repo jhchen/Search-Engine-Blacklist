@@ -1,12 +1,11 @@
-<script type="text/javascript" src="common.js"></script>
 <script>
+var blacklist = localStorage['blacklisted_sites'] ? JSON.parse(localStorage['blacklisted_sites']) : [];
+
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	if (request.method == "getBlacklist") {
-		if (localStorage['blacklisted_sites']) {
-			sendResponse(JSON.parse(localStorage['blacklisted_sites']));
-		}
+		sendResponse(blacklist);
+		return;
 	} else if (request.method == "addToBlacklist") {
-		blacklist = JSON.parse(localStorage['blacklisted_sites']);
 		blacklist.push(request.site);
 		localStorage['blacklisted_sites'] = JSON.stringify(blacklist);	
 	}
@@ -15,6 +14,6 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 
 if (!localStorage["version"] && !localStorage['blacklisted_sites']) {
     chrome.tabs.create({url: "options.html"}); 
-    localStorage["version"] = "2.7.1";
+    localStorage["version"] = "2.8";
 }
 </script>
