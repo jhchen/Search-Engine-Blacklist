@@ -28,14 +28,11 @@ var GoogleBlacklist = {
 	},
 
 	removeBlacklisted: function(forced) {
-		if (!forced) {
-			if ($("#ires ol li #blacklist_marker").length > 0) {
-				//Nothing's changed since our last trimming
-				return;
-			}
+		if (!forced && $("#ires ol li #blacklist_marker").length > 0) {
+			//Nothing's changed since our last trimming
+			return;
 		}
 
-		GoogleBlacklist.addTooltip();
 		$("#ires ol li").each(function() {
         	var that = this;
         	$("a.l", this).each(function() {
@@ -46,7 +43,8 @@ var GoogleBlacklist = {
         	});
     	});
 		
-		if (!forced) {
+		if ($("#ires ol li #blacklist_marker").length <= 0) {
+			GoogleBlacklist.addTooltip();
 			$("#ires ol li:first").append("<div style='display:none;' id='blacklist_marker'></div>");
 		}
 	},
