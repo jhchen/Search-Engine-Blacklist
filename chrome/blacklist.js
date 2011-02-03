@@ -58,18 +58,13 @@ var GoogleBlacklist = {
 		});
 		
 		$('.se_blacklist_tool_remove').live('click', function() {
-			//alert('1');
 			var li = $(this).closest('li');
 			var url = GoogleBlacklist.getBlackObject($('a.l:first', li).attr('href'));
-			//alert('2');
 			if (confirm("Blacklist " + url.full + "?")) {
-				//alert('3');
 				chrome.extension.sendRequest({method: "addToBlacklist", site: url}, function(response) {
 					GoogleBlacklist.blacklist.push(url);
 					GoogleBlacklist.removeBlacklisted(true);
-					//alert('4');
 				});
-				//alert('5');
 			}
 		});
 	},
@@ -90,5 +85,7 @@ $(document).ready(function() {
 			GoogleBlacklist.init(response);
 		});
 	}
+	
+	alert("The blacklist has loaded");
 });
 
