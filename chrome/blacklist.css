@@ -1,8 +1,9 @@
 @CHARSET "UTF-8";
 
 .se_blacklist_tool_remove {
-	/* CSS Content scripts require absolute path for now... http://code.google.com/p/chromium/issues/detail?id=39899 */
-	background: url('chrome-extension://jiicbcimbjppjbckmoknagndlhjbeohb/google_remove.png') no-repeat left bottom;
+	background-color: white;
+	background-position: left bottom;
+	background-repeat: no-repeat;
 	border: none;
 	cursor: pointer;
 	height: 14px;

@@ -53,8 +53,10 @@ var GoogleBlacklist = {
 
 	addTooltip: function() {
 		//Add buttons for the tooltip
+		var imgURL = chrome.extension.getURL("google_remove.png");
+		var button = $('<button>').addClass('se_blacklist_tool_remove').css("background-image", "url('" + imgURL + "')");
 		$("#ires ol li").each(function() {
-			$("button:last", this).after("<button class='se_blacklist_tool_remove'></button>");
+			$("button:last", this).after(button.clone());
 		});
 		
 		$('.se_blacklist_tool_remove').live('click', function() {
