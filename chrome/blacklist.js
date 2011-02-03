@@ -85,7 +85,5 @@ $(document).ready(function() {
 			GoogleBlacklist.init(response);
 		});
 	}
-	
-	alert("The blacklist has loaded");
 });
 
