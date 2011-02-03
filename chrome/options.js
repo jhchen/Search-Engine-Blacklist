@@ -69,7 +69,8 @@ $(document).ready(function() {
         });
 		
         localStorage["blacklisted_sites"] = JSON.stringify(sites);
-
+        chrome.extension.sendRequest({method: "updateBlacklist"}, function(response) {});
+        
         $("#save_status").slideDown();
 		setTimeout(function() {
 			$("#save_status").slideUp('slow');

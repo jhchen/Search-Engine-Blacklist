@@ -8,6 +8,8 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	} else if (request.method == "addToBlacklist") {
 		blacklist.push(request.site);
 		localStorage['blacklisted_sites'] = JSON.stringify(blacklist);	
+	} else if (request.method == 'updateBlacklist') {
+		blacklist = localStorage['blacklisted_sites'] ? JSON.parse(localStorage['blacklisted_sites']) : [];
 	}
 	sendResponse([]);
 });
