@@ -56,6 +56,15 @@ var GoogleBlacklist = {
 		$("#ires ol li").each(function() {
 			$("button:last", this).after(button.clone());
 		});
+	},
+
+	init: function(blacklist) {
+		GoogleBlacklist.blacklist = blacklist;
+		GoogleBlacklist.removeBlacklisted();
+		//For Google Instant
+		setInterval(function() {
+			GoogleBlacklist.removeBlacklisted();
+		}, 100);
 		
 		$('.se_blacklist_tool_remove').live('click', function() {
 			var li = $(this).closest('li');
@@ -67,15 +76,6 @@ var GoogleBlacklist = {
 				});
 			}
 		});
-	},
-
-	init: function(blacklist) {
-		GoogleBlacklist.blacklist = blacklist;
-		GoogleBlacklist.removeBlacklisted();
-		//For Google Instant
-		setInterval(function() {
-			GoogleBlacklist.removeBlacklisted();
-		}, 100);
 	}
 };
 
